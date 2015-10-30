@@ -5,7 +5,9 @@
   angular.module('ionic-datepicker')
   .service('DatepickerService', function () {
 
-    var locale = window.navigator.userLanguage || window.navigator.language;
+    //var locale = window.navigator.userLanguage || window.navigator.language;
+    //根据用户浏览器语言设置返回星期几，然后在页面上取字符串的第一个字符，在英文中没有问题
+    //但是在中文里就特别傻，因为取出来的都是“星星星星”
 
     this.getDaysOfWeek = function() {
       var today     = new Date()
@@ -14,7 +16,7 @@
         , lastDay   = firstDay + 6;
       for (var i = firstDay; i <= lastDay; i++) {
         today.setDate(i);
-        days.push(today.toLocaleString(locale, { weekday: 'long' }));
+        days.push(today.toDateString().split(" ")[0]);
       }
       return days;
     };
@@ -25,7 +27,7 @@
       for (var i = 0; i < 12; i++) {
         today.setDate(1);
         today.setMonth(i);
-        months.push(today.toLocaleString(locale, { month: 'long' }));
+        months.push(today.toDateString().split(" ")[1]);
       }
       return months;
     };

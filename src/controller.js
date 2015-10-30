@@ -4,6 +4,68 @@
 
   angular
   .module('ionic-datepicker')
+  .filter("zhWeek", [function(){
+    return function(input) {
+      var hash = {
+        "Mon": "一",
+        "Tue": "二",
+        "Wed": "三",
+        "Thu": "四",
+        "Fri": "五",
+        "Sat": "六",
+        "Sun": "日"
+      };
+      var ret = hash[input];
+      if (ret) {
+        return ret;
+      } else {
+        return input;
+      }
+    };
+  }])
+  .filter("zhWeekTran", [function(){
+    return function(input) {
+      var hash = {
+        "Monday": "星期一",
+        "Tuesday": "星期二",
+        "Wednesday": "星期三",
+        "Thursday": "星期四",
+        "Friday": "星期五",
+        "Saturday": "星期六",
+        "Sunday": "星期日"
+      };
+      var ret = hash[input];
+      if (ret) {
+        return ret;
+      } else {
+        return input;
+      }
+    };
+  }])
+  .filter("zhMonthTran", [function(){
+    return function(input) {
+      var hash = {
+        "Jan": "一月",
+        "Feb": "二月",
+        "Mar": "三月",
+        "Apr": "四月",
+        "May": "五月",
+        "Jun": "六月",
+        "Jul": "七月",
+        "Aug": "八月",
+        "Sep": "九月",
+        "Oct": "十月",
+        "Nov": "十一月",
+        "Dec": "十二月",
+      };
+      var ret = hash[input];
+      if (ret) {
+        return ret;
+      } else {
+        return input;
+      }
+    };
+  }])
   .controller('DatepickerCtrl', [ '$scope', 'DatepickerService', function ($scope, DatepickerService) {
 
     var type  = 'date'
