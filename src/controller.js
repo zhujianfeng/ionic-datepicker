@@ -188,5 +188,29 @@
       $scope.callback($scope.date);
     };
 
+    this.swipeLeft = function() {
+      var tDate = angular.copy(this.tempDate);
+      tDate.setMonth(tDate.getMonth() + 1);
+      if (this.isDisabled(tDate)) {
+        return;
+      }
+      var month = tDate.getMonth();
+      var year = tDate.getFullYear();
+      this.selectYear(year);
+      this.selectMonth(month);
+    };
+
+    this.swipeRight = function() {
+      var tDate = angular.copy(this.tempDate);
+      tDate.setMonth(tDate.getMonth() - 1);
+      if (this.isDisabled(tDate)) {
+        return;
+      }
+      var month = tDate.getMonth();
+      var year = tDate.getFullYear();
+      this.selectYear(year);
+      this.selectMonth(month);
+    };
+
   }]);
 })();
